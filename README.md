@@ -47,3 +47,32 @@ No bookmaker odds are accepted as model input. The adapter only retrieves footba
 ## Live API key
 
 Create a `.env` from `.env.example` and set `API_FOOTBALL_KEY`. Never put the key directly in source code or send it in chat.
+
+## Telegram bot — daily predictions
+
+- `data/stats_provider.py` — builds full match features (form, xG-proxy, injuries,
+  Elo) from live API-Football data for the predictor.
+- `data/elo_store.py` — API-Football has no Elo endpoint, so V3 maintains its own
+  Elo table in SQLite, updated from finished fixtures it scans.
+- `bot/scanner.py` — runs one full daily scan across the 8 core countries and
+  returns formatted, signal-filtered match cards (NO SIGNAL matches are dropped).
+- `bot/telegram_bot.py` — posts the daily scan to a Telegram channel/group on a
+  schedule, plus a manual `/scan` command for on-demand testing.
+
+**Known limitation:** API-Football's standard plans don't expose true shot-based
+xG. `stats_provider.py` uses each team's season average goals-for/against as a
+proxy — documented in that file. Swap it for a real xG source later if you get
+access to one; nothing else in the pipeline needs to change.
+
+### Setup
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env
+# edit .env: API_FOOTBALL_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+python run_bot.py
+```
+
+`TELEGRAM_CHAT_ID` is the channel/group the bot posts to — add the bot as an
+admin there first. `DAILY_SCAN_HOUR_UTC` (default 8) sets the daily post time.
+Use `/scan` in a chat with the bot to trigger an immediate test run.
