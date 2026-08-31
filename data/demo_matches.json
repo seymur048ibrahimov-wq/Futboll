@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "league": "Premier League",
+    "home": "Demo United",
+    "away": "Demo City",
+    "home_form": [
+      3,
+      2,
+      3,
+      1,
+      3,
+      2
+    ],
+    "away_form": [
+      0,
+      1,
+      2,
+      1,
+      0,
+      1
+    ],
+    "home_xg": 1.75,
+    "away_xg": 1.2,
+    "home_xga": 0.92,
+    "away_xga": 1.38,
+    "home_elo": 1680,
+    "away_elo": 1590,
+    "home_injuries": 1,
+    "away_injuries": 2,
+    "lineup_confirmed": false,
+    "home_attack_adj": 0,
+    "away_attack_adj": -0.03,
+    "home_dynamic_rating_adj": 20,
+    "away_dynamic_rating_adj": -10
+  },
+  {
+    "id": 2,
+    "league": "Süper Lig",
+    "home": "Demo SK",
+    "away": "Demo FK",
+    "home_form": [
+      3,
+      3,
+      2,
+      3,
+      1,
+      3
+    ],
+    "away_form": [
+      0,
+      1,
+      1,
+      2,
+      0,
+      1
+    ],
+    "home_xg": 1.88,
+    "away_xg": 0.88,
+    "home_xga": 0.82,
+    "away_xga": 1.58,
+    "home_elo": 1710,
+    "away_elo": 1510,
+    "home_injuries": 0,
+    "away_injuries": 3,
+    "lineup_confirmed": false,
+    "home_attack_adj": 0,
+    "away_attack_adj": -0.05,
+    "home_dynamic_rating_adj": 25,
+    "away_dynamic_rating_adj": -20
+  }
+]

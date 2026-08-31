@@ -1,0 +1,37 @@
+{
+  "id": 1001,
+  "league": "Premier League",
+  "home": "Team A",
+  "away": "Team B",
+  "home_form": [
+    3,
+    3,
+    1,
+    0,
+    3,
+    1
+  ],
+  "away_form": [
+    1,
+    0,
+    3,
+    1,
+    1,
+    2
+  ],
+  "home_xg": 1.65,
+  "away_xg": 1.22,
+  "home_xga": 0.98,
+  "away_xga": 1.31,
+  "home_elo": 1650,
+  "away_elo": 1580,
+  "home_injuries": 1,
+  "away_injuries": 2,
+  "lineup_confirmed": false,
+  "home_attack_adj": 0.0,
+  "away_attack_adj": 0.0,
+  "home_dynamic_rating_adj": 0,
+  "away_dynamic_rating_adj": 0,
+  "rest_home": 6,
+  "rest_away": 5
+}
