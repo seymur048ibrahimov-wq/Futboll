@@ -20,6 +20,15 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 from bot.scanner import run_daily_scan
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+import sys
+import logging
+import os
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    stream=sys.stdout,   # <-- bunu əlavə edin
+)
 logger = logging.getLogger("footballai.bot")
 
 TELEGRAM_MSG_LIMIT = 4000  # leave headroom under Telegram's 4096 char limit
