@@ -13,21 +13,17 @@ Run:
 
 import logging
 import os
+import sys
 
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 from bot.scanner import run_daily_scan
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-import sys
-import logging
-import os
-
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    stream=sys.stdout,   # <-- bunu əlavə edin
+    stream=sys.stdout,  # keep INFO/DEBUG logs out of stderr so Railway doesn't tag them as errors
 )
 logger = logging.getLogger("footballai.bot")
 
@@ -86,6 +82,11 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+def _utc_time(hour: int):
+    from datetime import time, timezone
+    return time(hour=hour, minute=0, tzinfo=timezone.utc)
+
+
 def build_app() -> Application:
     token = os.environ["TELEGRAM_BOT_TOKEN"]
     app = Application.builder().token(token).build()
@@ -100,11 +101,6 @@ def build_app() -> Application:
         )
     app.job_queue.run_daily(daily_job, time=_utc_time(hour))
     return app
-
-
-def _utc_time(hour: int):
-    from datetime import time, timezone
-    return time(hour=hour, minute=0, tzinfo=timezone.utc)
 
 
 def main():
